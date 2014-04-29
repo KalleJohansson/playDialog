@@ -1,0 +1,10 @@
+An attempt to build a module, that loads a jquery ui dialog,
+and in it a given html-page, adding events to a typical form
+in that page.
+
+Based on Play Framework 1.2.x serverside, requirejs, jquery and jquery ui clientside. 
+
+The html-pages used in this example has to comply to some convention,
+a closing input has to have a class ".cancelBtn".
+
+The form on the html-page is enclosed in a div having an id. 

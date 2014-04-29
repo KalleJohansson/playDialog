@@ -1,0 +1,45 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<a href="/show-us">Visa en annan sida</a>
+<form id="regexform" action="/compute" method="post">
+	<label for="test">TestString</label><br />
+    <input type="text" name="test" id="test" value=""><br />
+    <input type="submit" value="testIt!">
+</form>
+<select id="first">
+	<option value="">--choose car--</option>
+	<option value="01">BMW</option>
+	<option value="02">Volvo</option>
+	<option value="03">Ford</option>
+	<option value="04">Toyota</option>
+</select>
+<select id="second">
+	<option value="">--choose animal--</option>
+	<option value="10">Horse</option>
+	<option value="20">Cow</option>
+	<option value="30">Bird</option>
+	<option value="40">Fish</option>
+</select>
+<select id="third">
+	<option value="">--choose house--</option>
+	<option value="1010">Mansion</option>
+	<option value="2020">Villa</option>
+	<option value="3030">Bunglow</option>
+	<option value="4040">Treehouse</option>
+</select>
+<select id="fourth">
+	<option value="">--choose rocket--</option>
+	<option value="10000">Atlas</option>
+	<option value="10001">Redstone</option>
+	<option value="10002">Saturnus</option>
+	<option value="10003">Space Shuttle</option>
+</select>
+<br />
+<input type="button" class="clicker" value="Klicka">
+<form id="formToCheck" action="/formcheck" method="post">
+	<label for="fullname"></label>
+	<input type="text" name="fullname" placeholder="hela namnet" required>
+	<input type="submit" value="spara">
+</form>
+<a href="/show-dialog" class="dialogTrigger" data-dialog="show" data-title="hejsan">Öppna Dialog</a>
+<a href="/another-dialog" class="dialogTrigger" data-dialog="another" data-title="hoppsan">Öppna En Annan Dialog</a>

@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+#{set title:'show-dialog.html' /}
+<div id="showDialogPage">
+	<form id="showSave" action="/show-save" method="post">
+		<label for="firstname">Förnamn</label>
+		<input type="text" name="firstname" value="${flash.firstname}">
+		<span class="error">#{error 'firstname' /}</span><br>
+		<label for="lastname">Efternamn</label>
+		<input type="text" name="lastname" value="${flash.lastname}">
+		<span class="error">#{error 'lastname' /}</span><br>
+		<label for="address">Adress</label>
+		<input type="text" name="address" value="${flash.address}">
+		<span class="error">#{error 'address' /}</span><br>
+		<label for="postcode">Postnummer</label>
+		<input type="text" name="postcode" value="${flash.postcode}">
+		<span class="error">#{error 'postcode' /}</span><br>
+		<label for="postal">Postort</label>
+		<input type="text" name="postal" value="${flash.postal}">
+		<span class="error">#{error 'postal' /}</span><br>
+		<input type="submit" value="Spara">
+		<input type="button" class="btn btn-link cancelBtn" value="Avbryt">
+	</form>
+</div>

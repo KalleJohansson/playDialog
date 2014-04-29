@@ -1,0 +1,15 @@
+*{#{extends 'main.html' /}
+#{set title:'anotherDialog.html' /}}*
+<div id="anotherDialogPage">
+	<form id="anotherSave" action="/another-save" method="post">
+		<input type="text" name="cityname" value="${flash.cityname}">
+		<span class="error">#{error 'cityname' /}</span><br>
+		<input type="submit" value="Spara">
+		<input type="button" class="btn btn-link cancelBtn" value="Avbryt">
+	</form>
+	<div id="doneMessage" class="hidden">
+		<h1>Tack!</h1>
+		<p>Namnet är sparat.</p>
+		<input type="button" class="btn btn-link cancelBtn" value="Avbryt">
+	</div>
+</div>

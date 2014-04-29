@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'thirdDialog.html' /}
+<div id="thirdDialogPage">
+	<form id="thirdSave" action="/third-save" method="post">
+		<input type="text" name="fullname" value="${flash.fullname}">
+		<span class="error">#{error 'fullname' /}</span><br>
+		<input type="submit" value="Spara">
+		<input type="button" class="btn btn-link cancelBtn" value="Avbryt">
+	</form>
+</div>

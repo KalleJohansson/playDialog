@@ -1,0 +1,24 @@
+.clicker {
+	padding: 0.8em;
+	background: #555;
+	transition: 1s;
+}
+
+.clicker:hover {
+	background: #777;
+	transition: 0s;
+}
+
+.error {
+	color: red;
+}
+
+.ui-widget-overlay {
+	background: #777;
+	opacity: 0.5;
+}
+
+.ui-dialog {
+	border: 10px solid #808080;
+	border-radius: 10px;
+}
