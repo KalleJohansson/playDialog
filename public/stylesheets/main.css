@@ -22,3 +22,12 @@
 	border: 10px solid #808080;
 	border-radius: 10px;
 }
+
+.btn-link {
+	outline: 0;
+	*border: none;
+}
+
+select:disabled {
+	color: #fff;
+}
