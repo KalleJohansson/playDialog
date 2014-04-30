@@ -11,6 +11,7 @@ public class DialogContent extends Controller {
     		validation.keep();
     	} else {
     		validation.clear();
+    		//here we do some storage to the database
     	}
     	
     	if (request.isAjax()) {
@@ -31,6 +32,7 @@ public class DialogContent extends Controller {
     		validation.keep();
     	} else {
     		validation.clear();
+    		//here we do some storage to the database
     	}
     	
     	if (request.isAjax()) {
@@ -46,6 +48,7 @@ public class DialogContent extends Controller {
     		validation.keep();
     	} else {
     		validation.clear();
+    		//here we do some storage to the database
     	}
     	
     	if (request.isAjax()) {
