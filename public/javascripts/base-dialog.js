@@ -24,7 +24,6 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 			   effect: 'fade',
 			   duration: 800
 		   }
-		   ,title: title
 		   ,width: dimdialog.dialogWidth(dialogtype)
 		   ,height: dimdialog.dialogHeight(dialogtype)
 		   ,close: function () {
@@ -33,9 +32,14 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 		});
 		dialogHandle.load(url, function(response, status, xhr) {
 			if (xhr.status == '200' || xhr.status == '201') {
-				var formId = $(xhr.responseText).find('form').attr('id'),
+				var responseText = $(xhr.responseText), 
+					formId = responseText.find('form').attr('id'),
 					pageDiv = $('#' + formId).parent().attr('id'),
-					doneMessage = $('#' + pageDiv + ' div#doneMessage');
+					doneMessage = $('#' + pageDiv + ' div#doneMessage'),
+					pageTitle = xhr.responseText.match('<title>(.*?)</title>'),
+					title = pageTitle != null ? pageTitle[1] : 'default title';
+				
+				dialogHandle.dialog('option', 'title', title);
 				
 				$('#' + formId).submit(function(e) {
 					e.preventDefault();
