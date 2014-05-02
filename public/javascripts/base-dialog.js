@@ -35,8 +35,8 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 					formId = responseText.find('form').attr('id'),
 					pageDiv = $('#' + formId).parent().attr('id'),
 					doneMessage = $('#' + pageDiv + ' div#doneMessage'),
-					pageTitle = xhr.responseText.match('<title>(.*?)</title>'),
-					title = pageTitle != null ? pageTitle[1] : 'default title';
+					pageTitle = $('title:last').text(),
+					title = pageTitle != '' ? pageTitle : 'default title';
 				
 				dialogHandle.dialog('option', 'title', title);
 				
