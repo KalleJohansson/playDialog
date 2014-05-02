@@ -26,7 +26,7 @@ define(function() {
 		var height;
 		switch (dialogtype) {
 		case 'show':
-			height = 500;
+			height = 800;
 			break;
 		case 'third':
 			height = 800;

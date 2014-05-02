@@ -2,9 +2,12 @@
 #{set title:'thirdDialog.html' /}
 <div id="thirdDialogPage">
 	<form id="thirdSave" action="/third-save" method="post">
-		<input type="text" name="fullname" value="${flash.fullname}">
-		<span class="error">#{error 'fullname' /}</span><br>
-		<input type="submit" value="Spara">
+		<div class="form-group">
+			<label for="fullname">Hela namnet</label>
+			<input type="text" name="fullname" id="fullname" class="form-control" value="${flash.fullname}">
+			<span class="error">#{error 'fullname' /}</span><br>
+		</div>		
+		<input type="submit" class="btn btn-primary" value="Spara">
 		<input type="button" class="btn btn-link cancelBtn" value="Avbryt">
 	</form>
 </div>

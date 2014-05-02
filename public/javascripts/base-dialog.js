@@ -9,7 +9,6 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 		e.preventDefault();
 		
 		var $this = $(this),
-			title = $this.data('title'),
 			url = $this.attr('href'),
 			dialogtype = $this.data('dialog'),
 			dialogHandle = $('<div/>').addClass('dialogHandle');
@@ -53,6 +52,15 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 						$('#' + formId).load(url + ' #' + formId + '> *', function(){
 							$('#' + formId + ' input.cancelBtn:button').click(function(e) {
 								dialogHandle.dialog('close');
+							});
+							
+							$.each($('.form-group'), function(i, val){
+								var hasError = $(val).find('span.error').text();
+								if (hasError) {
+									$(val).addClass('has-error');
+								} else {
+									$(val).removeClass('has-error');
+								}
 							});
 						});
 						

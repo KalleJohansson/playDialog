@@ -1,11 +1,13 @@
-*{#{extends 'main.html' /}
-#{set title:'anotherDialog.html' /}}*
-<title>Another</title>
+#{extends 'main.html' /}
+#{set title:'anotherDialog' /}
 <div id="anotherDialogPage">
 	<form id="anotherSave" action="/another-save" method="post">
-		<input type="text" name="cityname" value="${flash.cityname}">
-		<span class="error">#{error 'cityname' /}</span><br>
-		<input type="submit" value="Spara">
+		<div class="form-group">
+			<label for="cityname">City name</label>
+			<input type="text" name="cityname" id="cityname" class="form-control" value="${flash.cityname}">
+			<span class="error">#{error 'cityname' /}</span><br>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Spara">
 		<input type="button" class="btn btn-link cancelBtn" value="Avbryt">
 	</form>
 	<div id="doneMessage" class="hidden">
