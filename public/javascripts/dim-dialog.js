@@ -15,6 +15,9 @@ define(function() {
 		case 'third':
 			width = 200;
 			break;
+		case 'login':
+			width = 600;
+			break;
 		default:
 			width = 300;
 			break;
@@ -30,6 +33,9 @@ define(function() {
 			break;
 		case 'third':
 			height = 800;
+			break;
+		case 'login':
+			height = 400;
 			break;
 		default:
 			height = 250;

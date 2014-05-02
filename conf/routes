@@ -11,11 +11,11 @@ POST	/compute								Application.compute
 
 POST 	/formcheck								Application.formcheck
 
-GET 	/show-dialog							Dialog.showDialog
+GET 	/show									Dialog.showDialog
 
-GET		/another-dialog							Dialog.anotherDialog
+GET		/another								Dialog.anotherDialog
 
-GET		/third-dialog							Dialog.thirdDialog
+GET		/third									Dialog.thirdDialog
 
 POST	/show-save								DialogContent.showSave
 
@@ -31,3 +31,6 @@ GET     /public/                                staticDir:public
 
 # Catch all
 #*       /{controller}/{action}                  {controller}.{action}
+
+# Import Secure routes
+*      /                						module:secure

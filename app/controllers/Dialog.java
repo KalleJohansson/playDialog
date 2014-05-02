@@ -2,7 +2,7 @@ package controllers;
 
 import play.mvc.*;
 
-
+@With(Secure.class)
 public class Dialog extends Controller {
 
     public static void showDialog() {

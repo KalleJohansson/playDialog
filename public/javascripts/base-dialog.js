@@ -10,7 +10,7 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 		
 		var $this = $(this),
 			url = $this.attr('href'),
-			dialogtype = $this.data('dialog'),
+//			dialogtype = url.replace('/', ''),
 			dialogHandle = $('<div/>').addClass('dialogHandle');
 		
 		dialogHandle.dialog({
@@ -23,22 +23,26 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 			   effect: 'fade',
 			   duration: 800
 		   }
-		   ,width: dimdialog.dialogWidth(dialogtype)
-		   ,height: dimdialog.dialogHeight(dialogtype)
+//		   ,width: dimdialog.dialogWidth(dialogtype)
+//		   ,height: dimdialog.dialogHeight(dialogtype)
 		   ,close: function () {
 			   $(this).remove();
 		   }
 		});
 		dialogHandle.load(url, function(response, status, xhr) {
 			if (xhr.status == '200' || xhr.status == '201') {
-				var responseText = $(xhr.responseText), 
-					formId = responseText.find('form').attr('id'),
+				var responseText = $(xhr.responseText),
+					form = responseText.find('form'),
+					formId = form.attr('id'),
 					pageDiv = $('#' + formId).parent().attr('id'),
 					doneMessage = $('#' + pageDiv + ' div#doneMessage'),
 					pageTitle = $('title:last').text(),
-					title = pageTitle != '' ? pageTitle : 'default title';
-				
+					title = pageTitle != '' ? pageTitle : 'default title',
+					dialogtype = pageDiv == 'login' ? $(form).attr('action').replace('/', '') : url.replace('/', '');
+
 				dialogHandle.dialog('option', 'title', title);
+				dialogHandle.dialog('option', 'width', dimdialog.dialogWidth(dialogtype));
+				dialogHandle.dialog('option', 'height', dimdialog.dialogHeight(dialogtype));
 				
 				$('#' + formId).submit(function(e) {
 					e.preventDefault();
