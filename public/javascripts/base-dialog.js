@@ -50,10 +50,6 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 					posting = $.post(postUrl, formData);
 					posting.done(function(data) {
 						$('#' + formId).load(url + ' #' + formId + '> *', function(){
-							$('#' + formId + ' input.cancelBtn:button').click(function(e) {
-								dialogHandle.dialog('close');
-							});
-							
 							$.each($('.form-group'), function(i, val){
 								var hasError = $(val).find('span.error').text();
 								if (hasError) {
@@ -61,6 +57,10 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 								} else {
 									$(val).removeClass('has-error');
 								}
+							});
+							
+							$('#' + formId + ' input.cancelBtn:button').click(function(e) {
+								dialogHandle.dialog('close');
 							});
 						});
 						
