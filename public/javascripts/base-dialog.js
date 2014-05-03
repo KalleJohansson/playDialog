@@ -11,7 +11,9 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 		var $this = $(this),
 			url = $this.attr('href'),
 //			dialogtype = url.replace('/', ''),
-			dialogHandle = $('<div/>').addClass('dialogHandle');
+			dialogHandle = $('<div/>').addClass('dialogHandle'),
+			pageDiv,
+			redrawUrl;
 		
 		dialogHandle.dialog({
 			modal: true
@@ -23,8 +25,6 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 			   effect: 'fade',
 			   duration: 800
 		   }
-//		   ,width: dimdialog.dialogWidth(dialogtype)
-//		   ,height: dimdialog.dialogHeight(dialogtype)
 		   ,close: function () {
 			   $(this).remove();
 		   }
@@ -38,8 +38,9 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 					doneMessage = $('#' + pageDiv + ' div#doneMessage'),
 					pageTitle = $('title:last').text(),
 					title = pageTitle != '' ? pageTitle : 'default title',
-					dialogtype = pageDiv == 'login' ? $(form).attr('action').replace('/', '') : url.replace('/', '');
-
+					dialogtype = pageDiv == 'login' ? $(form).attr('action').replace('/', '') : url.replace('/', ''),
+					redrawUrl = pageDiv == 'login' ? $(form).attr('action') : url;
+					
 				dialogHandle.dialog('option', 'title', title);
 				dialogHandle.dialog('option', 'width', dimdialog.dialogWidth(dialogtype));
 				dialogHandle.dialog('option', 'height', dimdialog.dialogHeight(dialogtype));
@@ -50,10 +51,10 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 						posting,
 						formData = $this.serialize(),
 						postUrl = $this.attr('action');
-					
+						
 					posting = $.post(postUrl, formData);
 					posting.done(function(data) {
-						$('#' + formId).load(url + ' #' + formId + '> *', function(){
+						$('#' + formId).load(redrawUrl + ' #' + formId + '> *', function(){
 							$.each($('.form-group'), function(i, val){
 								var hasError = $(val).find('span.error').text();
 								if (hasError) {
