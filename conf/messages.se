@@ -1,0 +1,10 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+secure.title=
+secure.username=Användarnamn:
+secure.password=Lösenord:
+secure.remember=Kom ihåg mig
+secure.signin=Logga in
+secure.error=Hoppsan, okänt användarnamn eller lösenord.
+secure.logout=Du har blivit utloggad.
