@@ -5,12 +5,11 @@
  * in this example, an anchor tag having a class ".dialogTrigger".
  */
 define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) {
-	$('.dialogTrigger').on('click', function(e) {
+	$('.dialogTrigger').on('click', function(e, arg1) {
 		e.preventDefault();
 		
 		var $this = $(this),
-			url = $this.attr('href'),
-//			dialogtype = url.replace('/', ''),
+			url = typeof arg1 !== 'undefined' ? arg1 : $this.attr('href'),
 			dialogHandle = $('<div/>').addClass('dialogHandle'),
 			pageDiv,
 			redrawUrl;
@@ -40,7 +39,7 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 					title = pageTitle != '' ? pageTitle : 'default title',
 					dialogtype = pageDiv == 'login' ? $(form).attr('action').replace('/', '') : url.replace('/', ''),
 					redrawUrl = pageDiv == 'login' ? $(form).attr('action') : url;
-					
+				
 				dialogHandle.dialog('option', 'title', title);
 				dialogHandle.dialog('option', 'width', dimdialog.dialogWidth(dialogtype));
 				dialogHandle.dialog('option', 'height', dimdialog.dialogHeight(dialogtype));
@@ -70,6 +69,11 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 						});
 						
 						if (data.errors.length === 0 && doneMessage.length === 0) {
+							if (pageDiv == 'login') {
+								dialogHandle.bind('dialogclose', function(e){
+									$('.dialogTrigger').triggerHandler('click', [url]);
+								});
+							} 
 							dialogHandle.dialog('close');
 						} else if (data.errors.length === 0 && doneMessage.length > 0) {
 							$('#' + formId).addClass('hidden');
