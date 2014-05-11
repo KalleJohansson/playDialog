@@ -22,7 +22,7 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 			}
 		   ,hide: {
 			   effect: 'fade',
-			   duration: 800
+			   duration: 200
 		   }
 		   ,close: function () {
 			   $(this).remove();
@@ -40,9 +40,11 @@ define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) 
 					dialogtype = pageDiv == 'login' ? $(form).attr('action').replace('/', '') : url.replace('/', ''),
 					redrawUrl = pageDiv == 'login' ? $(form).attr('action') : url;
 				
-				dialogHandle.dialog('option', 'title', title);
-				dialogHandle.dialog('option', 'width', dimdialog.dialogWidth(dialogtype));
-				dialogHandle.dialog('option', 'height', dimdialog.dialogHeight(dialogtype));
+				dialogHandle.dialog('option', {
+					title		: title,
+					width		: dimdialog.dialogWidth(dialogtype),
+					height		: dimdialog.dialogHeight(dialogtype)
+				});	
 				
 				$('#' + formId).submit(function(e) {
 					e.preventDefault();
