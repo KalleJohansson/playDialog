@@ -5,6 +5,7 @@
  * in this example, an anchor tag having a class ".dialogTrigger".
  */
 define('basedialog', ['dimdialog', 'errorcode'], function(dimdialog, errorcode) {
+	//The dialogTrigger class can be used by an anchor to trigger a dialog, convention
 	$('.dialogTrigger').on('click', function(e, arg1) {
 		e.preventDefault();
 		
