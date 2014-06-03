@@ -7,19 +7,21 @@ require.config({
 	   ,'basedialog'	: 'base-dialog'	
 	   ,'dimdialog'		: 'dim-dialog'
 	   ,'errorcode'		: 'errorcode'
+	   ,'tooltiphide'   : 'bigscripttomodules/tooltiphide'	   
 //	   ,'gremlins'		: 'gremlins.min'	   
 	}
    ,shim: {
 		jqueryui		: ['jquery']
 	   ,select			: ['jquery']
 	   ,basedialog		: ['jqueryui', 'dimdialog', 'errorcode']
+       ,tooltiphide     : ['jquery']
 //       ,gremlins		: ['basedialog']
 	}
 });
 
 
 require(
-		['jquery', 'jqueryui', 'select', 'basedialog', 'dimdialog', 'errorcode'/*, 'gremlins'*/], 
-		function($, jqueryui, select, baseDialog, dimdialog, errorcode/*, gremlins*/) {
+		['jquery', 'jqueryui', 'select', 'basedialog', 'dimdialog', 'errorcode', 'tooltiphide'/*, 'gremlins'*/], 
+		function($, jqueryui, select, baseDialog, dimdialog, errorcode, tooltiphide/*, gremlins*/) {
 //		gremlins.createHorde().unleash();
 });
