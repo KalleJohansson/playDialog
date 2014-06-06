@@ -114,29 +114,6 @@ var PlatsR_GUI = {
     	});
     },
     
-    
-    /**
-     * This function hides the title/tooltip,
-     * while hovering, for a tag with the
-     * given element. 
-     */
-    tooltipHide : function (element) {
-        $(element).hover(function(){
-            // Get the current title
-            var title = $(element).attr("title");
-            // Store it in a temporary attribute
-            $(element).attr("tmp_title", title);
-            // Set the title to nothing so we don't see the tooltips
-            $(element).attr("title","");
-            },
-            function() { // Fired when we leave the element
-            // Retrieve the title from the temporary attribute
-            var title = $(element).attr("tmp_title");
-            // Return the title to what it was
-            $(element).attr("title", title);
-            });
-    },
-    
     /**
      * Shows an ajax spinner while ajax request is done,
      * attached to the element.
@@ -4678,23 +4655,6 @@ var PlatsR_GUI = {
      */
     clearForm : function (formname) {
     	$(formname)[0].reset();	
-    },
-    
-    /**
-     * Creates call to Google Analytics,
-     * to collect statistics for the site
-     */
-    fireGoogleAnalyticsScript : function () {
-    	'use strict';
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-1898436-9']);
-        _gaq.push(['_trackPageview']);
-      
-        (function () {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
     }
 };//PlatsR_GUI namespace ends here
 

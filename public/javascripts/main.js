@@ -7,13 +7,14 @@ require.config({
 	   ,'basedialog'	: 'base-dialog'	
 	   ,'dimdialog'		: 'dim-dialog'
 	   ,'errorcode'		: 'errorcode'
-	   ,'tooltiphide'   : 'bigscripttomodules/tooltiphide'	   
+	   ,'tooltiphide'   : 'bigscripttomodules/tooltiphide'	
+	   ,'tidyinput'     : 'bigscripttomodules/tidyinput'
 //	   ,'gremlins'		: 'gremlins.min'	   
 	}
    ,shim: {
 		jqueryui		: ['jquery']
 	   ,select			: ['jquery']
-	   ,basedialog		: ['jqueryui', 'dimdialog', 'errorcode']
+	   ,basedialog		: ['jqueryui', 'dimdialog', 'errorcode', 'tidyinput']
        ,tooltiphide     : ['jquery']
 //       ,gremlins		: ['basedialog']
 	}
@@ -21,7 +22,9 @@ require.config({
 
 
 require(
-		['jquery', 'jqueryui', 'select', 'basedialog', 'dimdialog', 'errorcode', 'tooltiphide'/*, 'gremlins'*/], 
-		function($, jqueryui, select, baseDialog, dimdialog, errorcode, tooltiphide/*, gremlins*/) {
+		['jquery', 'jqueryui', 'select', 'basedialog', 'dimdialog', 'errorcode', 'tooltiphide', 'tidyinput'/*, 'gremlins'*/], 
+		function($, jqueryui, select, baseDialog, dimdialog, errorcode, tooltiphide, tidyinput/*, gremlins*/) {
+//			alert(tidyinput.tidyInput(["text", "another text"]));
+//			alert(tidyinput.tidyInput("text"));
 //		gremlins.createHorde().unleash();
 });
