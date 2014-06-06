@@ -54,7 +54,7 @@ define('basedialog', ['dimdialog', 'errorcode', 'tidyinput'], function(dimdialog
 						formData = $this.serialize(),
 						postUrl = $this.attr('action');
 					
-					tidyinput.tidyInput(formData);
+					formData = tidyinput.tidyInput(formData);
 					
 					posting = $.post(postUrl, formData);
 					posting.done(function(data) {

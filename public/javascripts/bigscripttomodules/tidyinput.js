@@ -20,10 +20,8 @@ define(function() {
 				var elem = inputArray[i];
 				var vals = elem.split('=');
 				key = vals[0];
-				value = vals[1];
-				alert(value);
+				value = unescape(vals[1]);
 				value = value.replace(SCRIPT_REGEX, '');
-				alert(value);
 				input += key + '=' + value;
 				if (i < (len - 1)) {
 					input += '&';
