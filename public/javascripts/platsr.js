@@ -4625,27 +4625,6 @@ var PlatsR_GUI = {
     		}
     		PlatsR_GUI.deleteCookie("scrollPosition");
     	}
-    }, 
-    
-    /**
-     * Scrolls back the given element to
-     * page top, at a given speed (800ms).
-     */
-    scrollTo : function (scrollToElement) {
-    	$('html, body').animate({
-            scrollTop: $(scrollToElement).offset().top
-        }, 800);
-    },
-    
-    /**
-     * Cleans out script tags from incoming
-     * text.
-     */
-    tidyInput : function(input) {
-    	var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-    	input = input.replace(SCRIPT_REGEX, '');
-    	
-    	return input;
     },
     
     /**
