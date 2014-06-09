@@ -52,7 +52,8 @@ define('basedialog', ['dimdialog', 'errorcode', 'tidyinput'], function(dimdialog
 					var $this = $(this),
 						posting,
 						formData = $this.serialize(),
-						postUrl = $this.attr('action');
+						postUrl = $this.attr('action'),
+						focusArr = [];
 					
 					formData = tidyinput.tidyInput(formData);
 					
@@ -63,11 +64,14 @@ define('basedialog', ['dimdialog', 'errorcode', 'tidyinput'], function(dimdialog
 								var hasError = $(val).find('span.error').text();
 								if (hasError) {
 									$(val).addClass('has-error');
+									focusArr.push($(val).find('input'));
 								} else {
 									$(val).removeClass('has-error');
 								}
 							});
-							
+							if (focusArr.length > 0) {
+								focusArr[0].focus();
+							}
 							$('#' + formId + ' input.cancelBtn:button').click(function(e) {
 								dialogHandle.dialog('close');
 							});
