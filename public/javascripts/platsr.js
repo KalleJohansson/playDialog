@@ -4625,15 +4625,6 @@ var PlatsR_GUI = {
     		}
     		PlatsR_GUI.deleteCookie("scrollPosition");
     	}
-    },
-    
-    /**
-     * This function clears the form, so that 
-     * we do not commit multiple times due to
-     * multiple clicks.
-     */
-    clearForm : function (formname) {
-    	$(formname)[0].reset();	
     }
 };//PlatsR_GUI namespace ends here
 
