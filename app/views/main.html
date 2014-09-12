@@ -9,6 +9,15 @@
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+<!--         <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script> -->
+        <script src="/public/javascripts/tinymce/tinymce.min.js"></script>
+        <script>
+        	tinymce.init({
+        		selector:'textarea',
+        		width: '40%'
+        	   ,height: '80%'
+        		});
+		</script>
     </head>
     <body>
         #{doLayout /}
