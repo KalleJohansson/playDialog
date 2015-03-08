@@ -30,8 +30,18 @@ define('basedialog', ['dimdialog', 'errorcode', 'tidyinput'], function(dimdialog
 		   }
 		});
 		dialogHandle.load(url, function(response, status, xhr) {
-			if (xhr.status == '200' || xhr.status == '201') {
-				var responseText = $(xhr.responseText),
+		var xhrObject = xhr,
+		    xhrStatus = xhrObject.status,
+		    okHttpStates = {
+		        OK: '200',
+		        CREATED: '201'
+		    };
+
+		    if (xhrStatus != okHttpStates.OK && xhrStatus != okHttpStates.CREATED) {
+		        dialogHandle.html('<i class="ui-state-error">' + errorcode.errorCode(xhr.status) + '</i>');
+		    }
+
+				var responseText = $(xhrObject.responseText),
 					form = responseText.find('form'),
 					formId = form.attr('id'),
 					pageDiv = $('#' + formId).parent().attr('id'),
@@ -59,6 +69,11 @@ define('basedialog', ['dimdialog', 'errorcode', 'tidyinput'], function(dimdialog
 					
 					posting = $.post(postUrl, formData);
 					posting.done(function(data) {
+						var validation = data.validation,
+						    baseModels = data.baseModels,
+						    errors = validation.errors,
+						    ids = baseModels.ids;
+						console.log(ids[1].id);
 						$('#' + formId).load(redrawUrl + ' #' + formId + '> *', function(){
 							$.each($('.form-group'), function(i, val){
 								var hasError = $(val).find('span.error').text();
@@ -77,14 +92,14 @@ define('basedialog', ['dimdialog', 'errorcode', 'tidyinput'], function(dimdialog
 							});
 						});
 						
-						if (data.errors.length === 0 && doneMessage.length === 0) {
+						if (errors.length === 0 && doneMessage.length === 0) {
 							if (pageDiv == 'login') {
 								dialogHandle.bind('dialogclose', function(e){
 									$('.dialogTrigger').triggerHandler('click', [url]);
 								});
 							} 
 							dialogHandle.dialog('close');
-						} else if (data.errors.length === 0 && doneMessage.length > 0) {
+						} else if (errors.length === 0 && doneMessage.length > 0) {
 							$('#' + formId).addClass('hidden');
 							$(doneMessage).removeClass('hidden');
 							$('#' + $(doneMessage).attr('id') + ' input.cancelBtn:button').click(function(e) {
@@ -101,9 +116,6 @@ define('basedialog', ['dimdialog', 'errorcode', 'tidyinput'], function(dimdialog
 				$('#' + formId + ' input.cancelBtn:button').click(function(e) {
 					dialogHandle.dialog('close');
 				});
-			} else {
-				dialogHandle.html('<i class="ui-state-error">' + errorcode.errorCode(xhr.status) + '</i>');
-			}
 		});
 	});
 });
